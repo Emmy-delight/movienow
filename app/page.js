@@ -1,4 +1,5 @@
-import Image from "next/image"
+import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage () {
     return (
@@ -9,13 +10,13 @@ export default function HomePage () {
           <h1 className="text-4xl font-bold text-center text-blue-300">Welcome to my Fashion House</h1>
           <div className="grid grid-cols-3">
             <div className="w-[400px] h-[400px] rounded-md bg-amber-100 shadow-2xl shadow-gray-200 ">
-              <Image
+             <Link href="https://www.earlycode.net"> <Image
               width={400}
-              height={350}
+              height={400}
               src="/ashoebi.jpg"
-              alt="image"
-              className="rounded-md"
-              />
+              alt="product"
+              className="w-[400px] rounded-md" />
+              </Link>
               <p className="text-sm font-semibold">Our Products are the best </p>
             </div>
               <div className="w-[400px] h-[400px] rounded-md bg-amber-100 shadow-2xl shadow-gray-200 ">
