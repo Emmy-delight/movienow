@@ -1,7 +1,11 @@
     "use client"
+import { db } from "@/config/firebase.config";
 import { Button, Card, CardContent, CardHeader, FormControl, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { addDoc, collection } from "firebase/firestore";
 import { useFormik } from "formik";
+import { useSession } from "next-auth/react";
 import * as yup from "yup";
+
 
 const schema = yup.object().shape({
     title: yup.string().required("Movie title is required").min(5),
@@ -9,8 +13,10 @@ const schema = yup.object().shape({
     status: yup.string().oneOf(["to-watch", "watched"]).required("Status is required"),
     comment: yup.string().required().min(10)
 })
-
-export default function AddMovie() {
+export default function AddMovie({userId}) {
+  const {data : session} = useSession();
+  const userIdentifier = userId || (session?.user?.id)
+  
       const {handleSubmit,handleChange,handleBlur,touched,values,errors} = useFormik({
         initialValues: {
             title:"",
@@ -18,8 +24,21 @@ export default function AddMovie() {
             status:"",
             comment:""
         },
-        onSubmit: ()=>{
-             console.log(`title: ${values.title}, comment: ${values.comment} status: ${values.status} posterUrl:${values.posterUrl}`) 
+        onSubmit: async ()=>{
+           await addDoc(collection(db, "movies"),{
+            user: userIdentifier,
+            title: values.title,
+            posterUrl: values.posterUrl,
+            status: values.status,
+            comment: values.comment,
+            timecreated: new Date().getTime(),
+           }).then(()=>{
+            alert("You have added a movie")
+           })
+           .catch(e =>{
+            console.error(e);
+            alert("You encountered an error, couldnt be uploaded")
+           });
         },
         validationSchema:schema
       })
@@ -51,6 +70,7 @@ export default function AddMovie() {
                     value={values.posterUrl}
                     onChange={handleChange}
                     placeholder="Enter poster Url"/>
+                    
                     {touched.posterUrl && errors.posterUrl ? <span className="text-red-600 text-xs">{errors.posterUrl}</span> : null}
                  </div> 
                  <FormControl>

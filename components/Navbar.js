@@ -1,4 +1,5 @@
     "use client"
+import Link from "next/link";
 import { useState } from "react";
 import { FaGripLines } from "react-icons/fa6";
 
@@ -13,11 +14,13 @@ export default function Navbar () {
             <div className="flex justify-between h-[50px] pt-3 px-5">
                 <p className="text-red-400 font-bold text-2xl">MovieNow</p>
                 <ul className="hidden md:flex gap-10 font-semibold cursor-pointer">
-                    <li>Movielist</li>
-                    <li>Add-movie</li>
-                    <li>Profile</li>
+                    <li><Link href="/dashboard/movie-list">Movielist</Link></li>
+                    <li><Link href="/dashboard/add-movie">Add-movie</Link></li>
+                    <li><Link href="/dashboard/profile">Profile</Link></li>
+                    
                 </ul>
-                <p className="hidden md:block h-[30px] w-[80px] bg-red-400 text-white text-center rounded-lg cursor-pointer ">Login</p>
+                <Link href="/auth/signin"><p className="hidden md:block h-[30px] w-[80px] bg-red-400 text-white text-center rounded-lg cursor-pointer ">Login</p>
+                </Link>
                 <div className="block py-2 md:hidden">
                    <FaGripLines className="text-2xl text-red-400"
                    onClick={toggleMenu}/>
