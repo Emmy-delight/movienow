@@ -4,8 +4,6 @@ import { FaGoogle } from "react-icons/fa";
 
 export default async function Signin () {
    const session = await auth();
-   console.log(session);
-
     return (
          <main className="min-h-[520px] flex justify-center bg-gray-50 py-8 px-2">
             <article>
