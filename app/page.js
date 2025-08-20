@@ -1,47 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 
 export default function HomePage () {
-    return (
-       <main>
-         <div className="bg-[url('/ashoebi.jpg')] h-[100vh] bg-cover bg-no-repeat">
-          <p className="text-3xl font-bold">Welcome to our Fashion House</p>
-         </div> 
-          <h1 className="text-4xl font-bold text-center text-blue-300">Welcome to my Fashion House</h1>
-          <div className="grid grid-cols-3">
-            <div className="w-[400px] h-[400px] rounded-md bg-amber-100 shadow-2xl shadow-gray-200 ">
-             <Link href="https://www.earlycode.net"> <Image
-              width={400}
-              height={400}
-              src="/ashoebi.jpg"
-              alt="product"
-              className="w-[400px] rounded-md" />
-              </Link>
-              <p className="text-sm font-semibold">Our Products are the best </p>
-            </div>
-              <div className="w-[400px] h-[400px] rounded-md bg-amber-100 shadow-2xl shadow-gray-200 ">
-              <Image
-              width={400}
-              height={350}
-              src="/ashoebi.jpg"
-              alt="image"
-              className="rounded-md"
-              />
-              <p className="text-sm font-semibold">Our Products are the best </p>
-            </div>
-              <div className="w-[400px] h-[400px] rounded-md bg-amber-100 shadow-2xl shadow-gray-200 ">
-              <Image
-              width={400}
-              height={350}
-              src="/ashoebi.jpg"
-              alt="image"
-              className="rounded-md"
-              />
-              <p className="text-sm font-semibold">Our Products are the best </p>
-            </div>
-          </div>
-
-       </main>
-       
-    )
+   return (
+        <main className="bg-[url(/bg-movie.webp)] h-[40vh] bg-contain bg-no-repeat md:bg-[url(/bg-movie.webp)] md:h-[60vh] md:bg-contain md:bg-no-repeat lg:bg-[url(/bg-movie.webp)] lg:h-[100vh] lg:bg-cover lg:bg-no-repeat">
+        </main>
+   )
 }

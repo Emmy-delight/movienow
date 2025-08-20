@@ -30,7 +30,6 @@ export default function MovieList ({userId}) {
                     })
                 })
                 setMovies(compileMovies)
-                console.log(compileMovies)
                 
             } catch(error) {
              console.error("An error occured Fetching movies:",error)
